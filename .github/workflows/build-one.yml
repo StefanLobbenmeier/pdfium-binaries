@@ -56,6 +56,14 @@ on:
         type: boolean
         required: false
         default: false
+      build_type:
+        description: Build type
+        type: choice
+        required: false
+        default: shared
+        options:
+          - shared
+          - static
 
 jobs:
   build:
@@ -71,3 +79,4 @@ jobs:
       target_environment: ${{ github.event.inputs.target_environment }}
       enable_v8: ${{ github.event.inputs.enable_v8 == 'true' }}
       emsdk_version: ${{ github.event.inputs.emsdk_version }}
+      build_type: ${{ github.event.inputs.build_type }}

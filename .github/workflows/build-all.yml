@@ -138,6 +138,110 @@ jobs:
       target_cpu: x86
       enable_v8: true
 
+  android_arm_static:
+    name: Android ARM static
+    uses: ./.github/workflows/build.yml
+    with:
+      branch: ${{ github.event.inputs.branch }}
+      version: ${{ github.event.inputs.version }}
+      is_debug: ${{ github.event.inputs.is_debug == 'true' }}
+      target_os: android
+      target_cpu: arm
+      build_type: static
+      enable_v8: false
+
+  android_arm_static_v8:
+    name: Android ARM static V8
+    if: github.event.inputs.enable_v8 == 'true'
+    needs: android_arm_static
+    uses: ./.github/workflows/build.yml
+    with:
+      branch: ${{ github.event.inputs.branch }}
+      version: ${{ github.event.inputs.version }}
+      is_debug: ${{ github.event.inputs.is_debug == 'true' }}
+      target_os: android
+      target_cpu: arm
+      build_type: static
+      enable_v8: true
+
+  android_arm64_static:
+    name: Android ARM64 static
+    uses: ./.github/workflows/build.yml
+    with:
+      branch: ${{ github.event.inputs.branch }}
+      version: ${{ github.event.inputs.version }}
+      is_debug: ${{ github.event.inputs.is_debug == 'true' }}
+      target_os: android
+      target_cpu: arm64
+      build_type: static
+      enable_v8: false
+
+  android_arm64_static_v8:
+    name: Android ARM64 static V8
+    if: github.event.inputs.enable_v8 == 'true'
+    needs: android_arm64_static
+    uses: ./.github/workflows/build.yml
+    with:
+      branch: ${{ github.event.inputs.branch }}
+      version: ${{ github.event.inputs.version }}
+      is_debug: ${{ github.event.inputs.is_debug == 'true' }}
+      target_os: android
+      target_cpu: arm64
+      build_type: static
+      enable_v8: true
+
+  android_x64_static:
+    name: Android x64 static
+    uses: ./.github/workflows/build.yml
+    with:
+      branch: ${{ github.event.inputs.branch }}
+      version: ${{ github.event.inputs.version }}
+      is_debug: ${{ github.event.inputs.is_debug == 'true' }}
+      target_os: android
+      target_cpu: x64
+      build_type: static
+      enable_v8: false
+
+  android_x64_static_v8:
+    name: Android x64 static V8
+    if: github.event.inputs.enable_v8 == 'true'
+    needs: android_x64_static
+    uses: ./.github/workflows/build.yml
+    with:
+      branch: ${{ github.event.inputs.branch }}
+      version: ${{ github.event.inputs.version }}
+      is_debug: ${{ github.event.inputs.is_debug == 'true' }}
+      target_os: android
+      target_cpu: x64
+      build_type: static
+      enable_v8: true
+
+  android_x86_static:
+    name: Android x86 static
+    uses: ./.github/workflows/build.yml
+    with:
+      branch: ${{ github.event.inputs.branch }}
+      version: ${{ github.event.inputs.version }}
+      is_debug: ${{ github.event.inputs.is_debug == 'true' }}
+      target_os: android
+      target_cpu: x86
+      build_type: static
+      enable_v8: false
+
+  android_x86_static_v8:
+    name: Android x86 static V8
+    if: github.event.inputs.enable_v8 == 'true'
+    needs: android_x86_static
+    uses: ./.github/workflows/build.yml
+    with:
+      branch: ${{ github.event.inputs.branch }}
+      version: ${{ github.event.inputs.version }}
+      is_debug: ${{ github.event.inputs.is_debug == 'true' }}
+      target_os: android
+      target_cpu: x86
+      build_type: static
+      enable_v8: true
+
   ios_catalyst_arm64:
     name: iOS catalyst ARM64
     uses: ./.github/workflows/build.yml
@@ -266,6 +370,146 @@ jobs:
       target_os: ios
       target_cpu: x64
       target_environment: simulator
+      enable_v8: true
+
+  ios_catalyst_arm64_static:
+    name: iOS catalyst ARM64 static
+    uses: ./.github/workflows/build.yml
+    with:
+      branch: ${{ github.event.inputs.branch }}
+      version: ${{ github.event.inputs.version }}
+      is_debug: ${{ github.event.inputs.is_debug == 'true' }}
+      target_os: ios
+      target_cpu: arm64
+      target_environment: catalyst
+      build_type: static
+      enable_v8: false
+
+  ios_catalyst_arm64_static_v8:
+    name: iOS catalyst ARM64 static V8
+    if: github.event.inputs.enable_v8 == 'true'
+    needs: ios_catalyst_arm64_static
+    uses: ./.github/workflows/build.yml
+    with:
+      branch: ${{ github.event.inputs.branch }}
+      version: ${{ github.event.inputs.version }}
+      is_debug: ${{ github.event.inputs.is_debug == 'true' }}
+      target_os: ios
+      target_cpu: arm64
+      target_environment: catalyst
+      build_type: static
+      enable_v8: true
+
+  ios_catalyst_x64_static:
+    name: iOS catalyst x64 static
+    uses: ./.github/workflows/build.yml
+    with:
+      branch: ${{ github.event.inputs.branch }}
+      version: ${{ github.event.inputs.version }}
+      is_debug: ${{ github.event.inputs.is_debug == 'true' }}
+      target_os: ios
+      target_cpu: x64
+      target_environment: catalyst
+      build_type: static
+      enable_v8: false
+
+  ios_catalyst_x64_static_v8:
+    name: iOS catalyst x64 static V8
+    if: github.event.inputs.enable_v8 == 'true'
+    needs: ios_catalyst_x64_static
+    uses: ./.github/workflows/build.yml
+    with:
+      branch: ${{ github.event.inputs.branch }}
+      version: ${{ github.event.inputs.version }}
+      is_debug: ${{ github.event.inputs.is_debug == 'true' }}
+      target_os: ios
+      target_cpu: x64
+      target_environment: catalyst
+      build_type: static
+      enable_v8: true
+
+  ios_device_arm64_static:
+    name: iOS device ARM64 static
+    uses: ./.github/workflows/build.yml
+    with:
+      branch: ${{ github.event.inputs.branch }}
+      version: ${{ github.event.inputs.version }}
+      is_debug: ${{ github.event.inputs.is_debug == 'true' }}
+      target_os: ios
+      target_cpu: arm64
+      target_environment: device
+      build_type: static
+      enable_v8: false
+
+  ios_device_arm64_static_v8:
+    name: iOS device ARM64 static V8
+    if: github.event.inputs.enable_v8 == 'true'
+    needs: ios_device_arm64_static
+    uses: ./.github/workflows/build.yml
+    with:
+      branch: ${{ github.event.inputs.branch }}
+      version: ${{ github.event.inputs.version }}
+      is_debug: ${{ github.event.inputs.is_debug == 'true' }}
+      target_os: ios
+      target_cpu: arm64
+      target_environment: device
+      build_type: static
+      enable_v8: true
+
+  ios_simulator_arm64_static:
+    name: iOS simulator ARM64 static
+    uses: ./.github/workflows/build.yml
+    with:
+      branch: ${{ github.event.inputs.branch }}
+      version: ${{ github.event.inputs.version }}
+      is_debug: ${{ github.event.inputs.is_debug == 'true' }}
+      target_os: ios
+      target_cpu: arm64
+      target_environment: simulator
+      build_type: static
+      enable_v8: false
+
+  ios_simulator_arm64_static_v8:
+    name: iOS simulator ARM64 static V8
+    if: github.event.inputs.enable_v8 == 'true'
+    needs: ios_simulator_arm64_static
+    uses: ./.github/workflows/build.yml
+    with:
+      branch: ${{ github.event.inputs.branch }}
+      version: ${{ github.event.inputs.version }}
+      is_debug: ${{ github.event.inputs.is_debug == 'true' }}
+      target_os: ios
+      target_cpu: arm64
+      target_environment: simulator
+      build_type: static
+      enable_v8: true
+
+  ios_simulator_x64_static:
+    name: iOS simulator x64 static
+    uses: ./.github/workflows/build.yml
+    with:
+      branch: ${{ github.event.inputs.branch }}
+      version: ${{ github.event.inputs.version }}
+      is_debug: ${{ github.event.inputs.is_debug == 'true' }}
+      target_os: ios
+      target_cpu: x64
+      target_environment: simulator
+      build_type: static
+      enable_v8: false
+
+  ios_simulator_x64_static_v8:
+    name: iOS simulator x64 static V8
+    if: github.event.inputs.enable_v8 == 'true'
+    needs: ios_simulator_x64_static
+    uses: ./.github/workflows/build.yml
+    with:
+      branch: ${{ github.event.inputs.branch }}
+      version: ${{ github.event.inputs.version }}
+      is_debug: ${{ github.event.inputs.is_debug == 'true' }}
+      target_os: ios
+      target_cpu: x64
+      target_environment: simulator
+      build_type: static
       enable_v8: true
 
   linux_arm:
@@ -571,22 +815,40 @@ jobs:
     needs:
       - android_arm
       - android_arm_v8
+      - android_arm_static
+      - android_arm_static_v8
       - android_arm64
       - android_arm64_v8
+      - android_arm64_static
+      - android_arm64_static_v8
       - android_x64
       - android_x64_v8
+      - android_x64_static
+      - android_x64_static_v8
       - android_x86
       - android_x86_v8
+      - android_x86_static
+      - android_x86_static_v8
       - ios_catalyst_arm64
       - ios_catalyst_arm64_v8
+      - ios_catalyst_arm64_static
+      - ios_catalyst_arm64_static_v8
       - ios_catalyst_x64
       - ios_catalyst_x64_v8
+      - ios_catalyst_x64_static
+      - ios_catalyst_x64_static_v8
       - ios_device_arm64
       - ios_device_arm64_v8
+      - ios_device_arm64_static
+      - ios_device_arm64_static_v8
       - ios_simulator_arm64
       - ios_simulator_arm64_v8
+      - ios_simulator_arm64_static
+      - ios_simulator_arm64_static_v8
       - ios_simulator_x64
       - ios_simulator_x64_v8
+      - ios_simulator_x64_static
+      - ios_simulator_x64_static_v8
       - linux_arm
       - linux_arm_v8
       - linux_arm64
@@ -728,16 +990,34 @@ jobs:
     needs:
       - android_arm
       - android_arm_v8
+      - android_arm_static
+      - android_arm_static_v8
       - android_arm64
       - android_arm64_v8
+      - android_arm64_static
+      - android_arm64_static_v8
       - android_x64
       - android_x64_v8
+      - android_x64_static
+      - android_x64_static_v8
       - android_x86
       - android_x86_v8
+      - android_x86_static
+      - android_x86_static_v8
+      - ios_catalyst_arm64_static
+      - ios_catalyst_arm64_static_v8
+      - ios_catalyst_x64_static
+      - ios_catalyst_x64_static_v8
       - ios_device_arm64
       - ios_device_arm64_v8
+      - ios_device_arm64_static
+      - ios_device_arm64_static_v8
+      - ios_simulator_arm64_static
+      - ios_simulator_arm64_static_v8
       - ios_simulator_x64
       - ios_simulator_x64_v8
+      - ios_simulator_x64_static
+      - ios_simulator_x64_static_v8
       - linux_arm
       - linux_arm_v8
       - linux_arm64
